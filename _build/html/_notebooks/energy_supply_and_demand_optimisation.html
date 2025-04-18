@@ -1,0 +1,1031 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Energy Supply and Demand Optimisation: Mathematical Modelling Using Gurobi Python &#8212; Veri Bilimi Portfolyosu</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_notebooks/energy_supply_and_demand_optimisation';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="ocr-essentials-with-easyocr.html" />
+    <link rel="prev" title="WELCOME!" href="bike-shares-data-viz-notebook.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/profile.png" class="logo__image only-light" alt="Veri Bilimi Portfolyosu - Home"/>
+    <script>document.write(`<img src="../_static/profile.png" class="logo__image only-dark" alt="Veri Bilimi Portfolyosu - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Veri Bilimi Portfolyom
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="bike-shares-data-viz-notebook.html"><span style=" color:red">WELCOME!</span></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><em><strong>Energy Supply and Demand Optimisation: Mathematical Modelling Using <strong>Gurobi Python</strong></strong></em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN_Notebook_1_CNN_complex.html">Data Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LSTM_GRU_DeepAR_notebook.html"><em><strong>About Dataset And Features:</strong></em></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="ARIMA_SARIMA_XGBoost.html"><u> <p style="text-indent:30px; text-align:center;"><strong>Household Electric Power Consumption Forecasting</strong></p></u></a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="OpenCV.html">Face Detection</a></li>
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/kullaniciadi/ds_portfolio/blob/master/_notebooks/energy_supply_and_demand_optimisation.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/kullaniciadi/ds_portfolio" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/_notebooks/energy_supply_and_demand_optimisation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Energy Supply and Demand Optimisation: Mathematical Modelling Using Gurobi Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation"><em><strong>2. Mathematical formulation:</strong></em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">2.1. Parameters:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-function">2.2. Objective function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constraints">2.3. Constraints:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mass-balance-constraint">2.3.1. Mass balance constraint:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demand-constraint">2.3.2. Demand constraint</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-domains-constraints">2.3.3. Variable domains constraints:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="energy-supply-and-demand-optimisation-mathematical-modelling-using-gurobi-python">
+<h1><em><strong>Energy Supply and Demand Optimisation: Mathematical Modelling Using <strong>Gurobi Python</strong></strong></em><a class="headerlink" href="#energy-supply-and-demand-optimisation-mathematical-modelling-using-gurobi-python" title="Link to this heading">#</a></h1>
+<p><img alt="image.png" src="_notebooks/attachment:image.png" /></p>
+<p>Let us envision a hypothetical situation where we are responsible for formulating the yearly budget for energy production and storage in a fictitious country. In this country, there are only four energy sources, namely solar, wind, natural gas, and nuclear.</p>
+<p><img alt="image.png" src="_notebooks/attachment:image.png" /></p>
+<p>We have access to data detailing their monthly production and storage capacities, and also insights into the associated production and storage costs. Additionally, we assume to have the understanding of the energy demand throughout the year. The key question is: how can we optimise the monthly production and storage quantities for each energy source to minimise the total annual cost?</p>
+<section id="mathematical-formulation">
+<h2><em><strong>2. Mathematical formulation:</strong></em><a class="headerlink" href="#mathematical-formulation" title="Link to this heading">#</a></h2>
+<section id="parameters">
+<h3>2.1. Parameters:<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h3>
+<p>The mathematical notations used in our model; we denote e ∈ E as the type of energy source in the set of all energy sources E (solar, wind, natural gas, and nuclear), and t ∈ T as the month in the set of all the months T (January, February, March, and so on).</p>
+<p>Now, we introduce the following parameters given for our problem:</p>
+<ul class="simple">
+<li><p>Dₜ is the total projected energy demand for month t.</p></li>
+<li><p>Pₜₑ is the production upper limit of energy source e in month t.</p></li>
+<li><p>Sₜₑ is the storage upper limit of energy source e in month t.</p></li>
+<li><p>Aₑ is the production cost of energy source e .</p></li>
+<li><p>Bₑ is the storage cost of energy source e.</p></li>
+</ul>
+<p>The variables of our model are defined as follow:</p>
+<ul class="simple">
+<li><p>xₜₑ is the amount of energy source e produced in month t.</p></li>
+<li><p>yₜₑ is the amount of energy source e remained in month t, which is also the amount that will be stored during that month.</p></li>
+<li><p>zₜₑ is the amount of energy source e used in month t to satisfy the energy demand for that month.</p></li>
+</ul>
+</section>
+<section id="objective-function">
+<h3>2.2. Objective function<a class="headerlink" href="#objective-function" title="Link to this heading">#</a></h3>
+<p>Now, we will define our objective function. Our aim is to minimise the total cost for the entire year. This can be expressed in mathematical terms as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\min \sum_{e \in E} \sum_{t \in T} \left( A_e x_{te} + B_e y_{te} \right)
+\]</div>
+<p>Here, Aₑxₜₑ represents the production cost of energy e in month t, while Bₑyₜₑ denotes the storage cost of energy e in month t. The two summation signs Σ signify the summation of these production and storage costs over all energy sources throughout the year. The goal is to find the values for the variables xₜₑ and yₜₑ that minimise the total cost.</p>
+</section>
+<section id="constraints">
+<h3>2.3. Constraints:<a class="headerlink" href="#constraints" title="Link to this heading">#</a></h3>
+<p>Constraints are a vital part of our problem-solving approach. They ensure the solutions we find are both realistic and feasible, given our parameters.</p>
+<section id="mass-balance-constraint">
+<h4>2.3.1. Mass balance constraint:<a class="headerlink" href="#mass-balance-constraint" title="Link to this heading">#</a></h4>
+<p>The first constraint, also known as the mass balance constraint, ensures that for each energy source in a given month, the sum of the amount produced and the amount carried over from the previous month equals the sum of the amount used and the amount carried over to the next month. We assume that in the first month _t_₀ (January), there is no energy in storage yet. Mathematically, this constraint can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+x_{te} + y_{t-1,e} = z_{te} + y_{te} \quad \forall t \in T / t_0, \forall e \in E
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+x_{t_0e} = z_{t_0e} + y_{t_0e} \quad \forall e \in E
+\]</div>
+</section>
+<section id="demand-constraint">
+<h4>2.3.2. Demand constraint<a class="headerlink" href="#demand-constraint" title="Link to this heading">#</a></h4>
+<p>Next, we have the demand constraint, which is a fundamental aspect of our problem. It ensures that in any given month, the combined energy produced and carried forward from the previous month must be sufficient to meet the energy demand for that month. Mathematically, this constraint can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{e \in E} \left( x_{te} + y_{t-1,e} \right) \geq D_t \quad \forall t \in T / t_0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\sum_{e \in E} x_{t_0e} \geq D_{t_0}
+\]</div>
+<p>Here, Σₑ represents the sum over all energy source e. The constraint ensures that the total energy available (the sum of production and storage across all energy sources) in a given month t is greater than or equal to the energy demand Dₜ for that month. Given that there is no energy storage in the first month _t_₀, we simply ensure that the total energy produced in the first month is sufficient to meet the demand for that month.</p>
+</section>
+<section id="variable-domains-constraints">
+<h4>2.3.3. Variable domains constraints:<a class="headerlink" href="#variable-domains-constraints" title="Link to this heading">#</a></h4>
+<p>The final set of constraints involves defining the domains of our variables, which are crucial for ensuring that the values of these variables remain within meaningful and feasible bounds. In our case, we have production limits and storage limits that restrict the values of xₜₑ and yₜₑ, respectively. Additionally, given that these variables should not take negative values, we need to set lower limits on their domains. Mathematically, the domain constraints can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+0 \leq x_{te} \leq P_{te}   \quad \quad \forall t \in T , \forall e \in E
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+0 \leq y_{te} \leq S_{te}   \quad \quad \forall t \in T , \forall e \in E
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+z_{te} \geq 0  \quad \quad \forall t \in T , \forall e \in E
+\]</div>
+<p>There is no need to explicitly define the upper limit for zₜₑ because it is inherently determined by the mass balance constraint.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">gurobipy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: gurobipy in c:\users\nazim\anaconda3\envs\newenv2\lib\site-packages (12.0.1)Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gurobipy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gurobipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">GRB</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">data_extraction</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+
+<span class="c1"># Model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">gurobipy</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Energy optimisation&quot;</span><span class="p">)</span>
+
+<span class="c1"># Variables</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span>
+    <span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">,</span> 
+    <span class="n">Data</span><span class="o">.</span><span class="n">energies</span><span class="p">,</span> 
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Amount supplied&quot;</span><span class="p">,</span> 
+    <span class="n">ub</span><span class="o">=</span><span class="n">Data</span><span class="o">.</span><span class="n">production_limit</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">,</span> <span class="n">Data</span><span class="o">.</span><span class="n">energies</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Amount remained&quot;</span><span class="p">)</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">addVars</span><span class="p">(</span><span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">,</span> <span class="n">Data</span><span class="o">.</span><span class="n">energies</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Amount used&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">gurobipy</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span><span class="w"> </span><span class="nn">gurobipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">GRB</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">data_extraction</span><span class="w"> </span><span class="kn">import</span> <span class="n">Data</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># Model</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">model</span> <span class="o">=</span> <span class="n">gurobipy</span><span class="o">.</span><span class="n">Model</span><span class="p">(</span><span class="s2">&quot;Energy optimisation&quot;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;data_extraction&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Constraints</span>
+<span class="c1"># Energy balance</span>
+<span class="k">for</span> <span class="n">m_ind</span><span class="p">,</span> <span class="n">month</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">month</span> <span class="o">!=</span> <span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="k">for</span> <span class="n">energy</span> <span class="ow">in</span> <span class="n">Data</span><span class="o">.</span><span class="n">energies</span><span class="p">:</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span>
+                <span class="n">Y</span><span class="p">[</span><span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">[</span><span class="n">m_ind</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">energy</span><span class="p">]</span> <span class="o">+</span> <span class="n">X</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">energy</span><span class="p">]</span>
+                <span class="o">==</span> <span class="n">Z</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">energy</span><span class="p">]</span> <span class="o">+</span> <span class="n">Y</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">energy</span><span class="p">],</span>
+                <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Energy balance&quot;</span>
+            <span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">energy</span> <span class="ow">in</span> <span class="n">Data</span><span class="o">.</span><span class="n">energies</span><span class="p">:</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">energy</span><span class="p">]</span>
+        <span class="o">==</span> <span class="n">Z</span><span class="p">[</span><span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">energy</span><span class="p">]</span> <span class="o">+</span> <span class="n">Y</span><span class="p">[</span><span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">energy</span><span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Energy balance&quot;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Demand</span>
+<span class="k">for</span> <span class="n">m_ind</span><span class="p">,</span> <span class="n">month</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">month</span> <span class="o">!=</span> <span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span>
+            <span class="n">gurobipy</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span>
+                <span class="n">Y</span><span class="p">[</span><span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">[</span><span class="n">m_ind</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">energy</span><span class="p">]</span> <span class="o">+</span> <span class="n">X</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">energy</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">energy</span> <span class="ow">in</span> <span class="n">Data</span><span class="o">.</span><span class="n">energies</span>
+            <span class="p">)</span>
+            <span class="o">&gt;=</span> <span class="n">Data</span><span class="o">.</span><span class="n">demand</span><span class="p">[</span><span class="n">month</span><span class="p">],</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Demand&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span>
+    <span class="p">(</span>
+        <span class="n">gurobipy</span><span class="o">.</span><span class="n">quicksum</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">energy</span><span class="p">]</span> <span class="k">for</span> <span class="n">energy</span> <span class="ow">in</span> <span class="n">Data</span><span class="o">.</span><span class="n">energies</span><span class="p">)</span>
+        <span class="o">&gt;=</span> <span class="n">Data</span><span class="o">.</span><span class="n">demand</span><span class="p">[</span><span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="p">),</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Demand&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;gurobi.Constr *Awaiting Model Update*&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Storage</span>
+<span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">energy</span> <span class="ow">in</span> <span class="n">Data</span><span class="o">.</span><span class="n">energies</span><span class="p">:</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span>
+            <span class="n">Y</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">energy</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">Data</span><span class="o">.</span><span class="n">storage_limit</span><span class="p">[</span><span class="n">energy</span><span class="p">],</span>
+            <span class="n">name</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Storage_</span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">energy</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Objective function</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">energy</span> <span class="ow">in</span> <span class="n">Data</span><span class="o">.</span><span class="n">energies</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">month</span> <span class="ow">in</span> <span class="n">Data</span><span class="o">.</span><span class="n">months</span><span class="p">:</span>
+        <span class="n">obj</span> <span class="o">+=</span> <span class="p">(</span><span class="n">Data</span><span class="o">.</span><span class="n">production_cost</span><span class="p">[</span><span class="n">energy</span><span class="p">]</span> <span class="o">*</span> <span class="n">X</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">energy</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="n">Data</span><span class="o">.</span><span class="n">storage_cost</span><span class="p">[</span><span class="n">energy</span><span class="p">]</span> <span class="o">*</span> <span class="n">Y</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">energy</span><span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">GRB</span><span class="o">.</span><span class="n">MINIMIZE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run</span>
+<span class="n">model</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">printAttr</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;out.json&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gurobi Optimizer version 12.0.1 build v12.0.1rc0 (win64 - Windows 10.0 (19045.2))
+
+CPU model: Intel(R) Core(TM) i5 CPU       M 460  @ 2.53GHz, instruction set [SSE2]
+Thread count: 2 physical cores, 4 logical processors, using up to 4 threads
+
+Optimize a model with 108 rows, 144 columns and 328 nonzeros
+Model fingerprint: 0xb2f2348b
+Coefficient statistics:
+  Matrix range     [1e+00, 1e+00]
+  Objective range  [0e+00, 0e+00]
+  Bounds range     [7e+02, 2e+04]
+  RHS range        [2e+03, 3e+04]
+Presolve removed 108 rows and 144 columns
+Presolve time: 0.04s
+Presolve: All rows and columns removed
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    0.0000000e+00   0.000000e+00   0.000000e+00      0s
+
+Solved in 0 iterations and 0.06 seconds (0.00 work units)
+Optimal objective  0.000000000e+00
+
+    Variable            X 
+-------------------------
+Amount supplied[Jan,Solar]          750 
+Amount supplied[Jan,Wind]        12000 
+Amount supplied[Jan,Natural Gas]        16500 
+Amount supplied[Jan,Nuclear]         6000 
+Amount supplied[Feb,Solar]          900 
+Amount supplied[Feb,Wind]        15000 
+Amount supplied[Feb,Natural Gas]         8550 
+Amount supplied[Feb,Nuclear]         4950 
+Amount supplied[Mar,Solar]         1425 
+Amount supplied[Mar,Wind]         9000 
+Amount supplied[Mar,Natural Gas]        15075 
+Amount supplied[Mar,Nuclear]         6150 
+Amount supplied[Apr,Solar]         2400 
+Amount supplied[Apr,Wind]         8250 
+Amount supplied[Apr,Natural Gas]        15000 
+Amount supplied[Apr,Nuclear]         5250 
+Amount supplied[May,Solar]         2400 
+Amount supplied[May,Wind]         8850 
+Amount supplied[May,Natural Gas]        16875 
+Amount supplied[May,Nuclear]         6000 
+Amount supplied[Jun,Solar]         2550 
+Amount supplied[Jun,Wind]         7350 
+Amount supplied[Jun,Natural Gas]        15150 
+Amount supplied[Jun,Nuclear]         6000 
+Amount supplied[Jul,Solar]         2550 
+Amount supplied[Jul,Wind]         6600 
+Amount supplied[Jul,Natural Gas]        16650 
+Amount supplied[Jul,Nuclear]         5100 
+Amount supplied[Aug,Solar]         2550 
+Amount supplied[Aug,Wind]         5400 
+Amount supplied[Aug,Natural Gas]        17250 
+Amount supplied[Aug,Nuclear]         4800 
+Amount supplied[Sep,Solar]         2100 
+Amount supplied[Sep,Wind]         8300 
+Amount supplied[Sep,Natural Gas]        16500 
+Amount supplied[Sep,Nuclear]         5000 
+Amount supplied[Oct,Solar]         1200 
+Amount supplied[Oct,Wind]        13500 
+Amount supplied[Oct,Natural Gas]        14500 
+Amount supplied[Oct,Nuclear]         4600 
+Amount supplied[Nov,Solar]          750 
+Amount supplied[Nov,Wind]        13500 
+Amount supplied[Nov,Natural Gas]        15000 
+Amount supplied[Nov,Nuclear]         4700 
+Amount supplied[Dec,Solar]          650 
+Amount supplied[Dec,Wind]        12000 
+Amount supplied[Dec,Natural Gas]        15000 
+Amount supplied[Dec,Nuclear]         6000 
+Amount remained[Jan,Solar]          750 
+Amount remained[Jan,Natural Gas]         9500 
+Amount remained[Sep,Solar]         2000 
+Amount used[Jan,Wind]        12000 
+Amount used[Jan,Natural Gas]         7000 
+Amount used[Jan,Nuclear]         6000 
+Amount used[Feb,Solar]         1650 
+Amount used[Feb,Wind]        15000 
+Amount used[Feb,Natural Gas]        18050 
+Amount used[Feb,Nuclear]         4950 
+Amount used[Mar,Solar]         1425 
+Amount used[Mar,Wind]         9000 
+Amount used[Mar,Natural Gas]        15075 
+Amount used[Mar,Nuclear]         6150 
+Amount used[Apr,Solar]         2400 
+Amount used[Apr,Wind]         8250 
+Amount used[Apr,Natural Gas]        15000 
+Amount used[Apr,Nuclear]         5250 
+Amount used[May,Solar]         2400 
+Amount used[May,Wind]         8850 
+Amount used[May,Natural Gas]        16875 
+Amount used[May,Nuclear]         6000 
+Amount used[Jun,Solar]         2550 
+Amount used[Jun,Wind]         7350 
+Amount used[Jun,Natural Gas]        15150 
+Amount used[Jun,Nuclear]         6000 
+Amount used[Jul,Solar]         2550 
+Amount used[Jul,Wind]         6600 
+Amount used[Jul,Natural Gas]        16650 
+Amount used[Jul,Nuclear]         5100 
+Amount used[Aug,Solar]         2550 
+Amount used[Aug,Wind]         5400 
+Amount used[Aug,Natural Gas]        17250 
+Amount used[Aug,Nuclear]         4800 
+Amount used[Sep,Solar]          100 
+Amount used[Sep,Wind]         8300 
+Amount used[Sep,Natural Gas]        16500 
+Amount used[Sep,Nuclear]         5000 
+Amount used[Oct,Solar]         3200 
+Amount used[Oct,Wind]        13500 
+Amount used[Oct,Natural Gas]        14500 
+Amount used[Oct,Nuclear]         4600 
+Amount used[Nov,Solar]          750 
+Amount used[Nov,Wind]        13500 
+Amount used[Nov,Natural Gas]        15000 
+Amount used[Nov,Nuclear]         4700 
+Amount used[Dec,Solar]          650 
+Amount used[Dec,Wind]        12000 
+Amount used[Dec,Natural Gas]        15000 
+Amount used[Dec,Nuclear]         6000 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># Extract data from gurobipy tupledicts</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">month</span><span class="p">,</span> <span class="n">energy</span><span class="p">),</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">X</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+	<span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+		<span class="s2">&quot;Month&quot;</span><span class="p">:</span> <span class="n">month</span><span class="p">,</span>
+		<span class="s2">&quot;Energy&quot;</span><span class="p">:</span> <span class="n">energy</span><span class="p">,</span>
+		<span class="s2">&quot;Amount Supplied&quot;</span><span class="p">:</span> <span class="n">var</span><span class="o">.</span><span class="n">X</span><span class="p">,</span>
+		<span class="s2">&quot;Amount Remained&quot;</span><span class="p">:</span> <span class="n">Y</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">energy</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="p">,</span>
+		<span class="s2">&quot;Amount Used&quot;</span><span class="p">:</span> <span class="n">Z</span><span class="p">[</span><span class="n">month</span><span class="p">,</span> <span class="n">energy</span><span class="p">]</span><span class="o">.</span><span class="n">X</span>
+	<span class="p">})</span>
+
+<span class="c1"># Create a DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Save to CSV and read back</span>
+<span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;out.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;out.csv&quot;</span><span class="p">)</span>
+<span class="n">df_csv</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Month</th>
+      <th>Energy</th>
+      <th>Amount Supplied</th>
+      <th>Amount Remained</th>
+      <th>Amount Used</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>15</th>
+      <td>Apr</td>
+      <td>Nuclear</td>
+      <td>5250.0</td>
+      <td>0.0</td>
+      <td>5250.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Jul</td>
+      <td>Solar</td>
+      <td>2550.0</td>
+      <td>0.0</td>
+      <td>2550.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>May</td>
+      <td>Wind</td>
+      <td>8850.0</td>
+      <td>0.0</td>
+      <td>8850.0</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Nov</td>
+      <td>Natural Gas</td>
+      <td>15000.0</td>
+      <td>0.0</td>
+      <td>15000.0</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Dec</td>
+      <td>Solar</td>
+      <td>650.0</td>
+      <td>0.0</td>
+      <td>650.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Feb</td>
+      <td>Solar</td>
+      <td>900.0</td>
+      <td>0.0</td>
+      <td>1650.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>May</td>
+      <td>Natural Gas</td>
+      <td>16875.0</td>
+      <td>0.0</td>
+      <td>16875.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Apr</td>
+      <td>Solar</td>
+      <td>2400.0</td>
+      <td>0.0</td>
+      <td>2400.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Feb</td>
+      <td>Natural Gas</td>
+      <td>8550.0</td>
+      <td>0.0</td>
+      <td>18050.0</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Aug</td>
+      <td>Nuclear</td>
+      <td>4800.0</td>
+      <td>0.0</td>
+      <td>4800.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "newenv2"
+        },
+        kernelOptions: {
+            name: "newenv2",
+            path: "./_notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'newenv2'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="bike-shares-data-viz-notebook.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span style=" color:red">WELCOME!</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ocr-essentials-with-easyocr.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation"><em><strong>2. Mathematical formulation:</strong></em></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">2.1. Parameters:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-function">2.2. Objective function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#constraints">2.3. Constraints:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mass-balance-constraint">2.3.1. Mass balance constraint:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demand-constraint">2.3.2. Demand constraint</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#variable-domains-constraints">2.3.3. Variable domains constraints:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nazım ÇALIK
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

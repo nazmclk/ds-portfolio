@@ -1,0 +1,14 @@
+
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: _notebooks/bike-shares-data-viz-notebook
+- file: _notebooks/energy_supply_and_demand_optimisation
+- file: _notebooks/ocr-essentials-with-easyocr
+- file: _notebooks/CNN_Notebook_1_CNN_complex
+- file: _notebooks/LSTM_GRU_DeepAR_notebook
+- file: _notebooks/ARIMA_SARIMA_XGBoost
+- file: _notebooks/OpenCV

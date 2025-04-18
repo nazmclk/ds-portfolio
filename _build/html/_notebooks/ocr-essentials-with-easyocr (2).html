@@ -1,0 +1,1162 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; Veri Bilimi Portfolyosu</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_notebooks/ocr-essentials-with-easyocr (2)';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/profile.png" class="logo__image only-light" alt="Veri Bilimi Portfolyosu - Home"/>
+    <script>document.write(`<img src="../_static/profile.png" class="logo__image only-dark" alt="Veri Bilimi Portfolyosu - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Veri Bilimi Portfolyom
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/kullaniciadi/ds_portfolio/blob/master/_notebooks/ocr-essentials-with-easyocr (2).ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/kullaniciadi/ds_portfolio" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/_notebooks/ocr-essentials-with-easyocr (2).ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p><strong>OCR (Optical Character Recognition - Optik Karakter Tanıma)</strong>, resim veya taranmış belgelerdeki yazıları dijital metne dönüştürmek için kullanılan bir tekniktir. Tesseract ve EasyOCR, OCR işlemleri için yaygın olarak kullanılan iki Python kütüphanesidir.<br><br>
+<strong>Tesseract</strong>, Google tarafından geliştirilen açık kaynaklı bir OCR motorudur.
+Esnekliği ve yüksek doğruluğu nedeniyle çok popülerdir.<br>
+Özellikler:<br>
+•	Çok Dilli Destek: 100’den fazla dilde OCR işlemi yapabilir. Özelleştirilmiş dil modelleri oluşturma imkanı sunar.<br>
+•	Düzenli Metin Çıktısı: Metinleri satır satır veya kelime kelime çıkarabilir.<br>
+•	Konfigürasyon Yeteneği: OCR işlemi sırasında farklı parametreler ile özelleştirilebilir.<br>
+•	Düzenli İfade Desteği: Çıktıyı düzenlemek için regex (düzenli ifadeler) kullanılabilir.<br>
+•	Performans: Büyük dosyalar üzerinde çalışırken güçlüdür ancak modern tekniklere göre daha yavaş kalabilir.<br></p>
+<p><strong>EasyOCR</strong>, PyTorch tabanlı modern bir OCR kütüphanesidir. Özellikle deep learning algoritmalarını kullandığı için güçlü bir performans sunar ve daha karmaşık OCR senaryolarında başarılıdır.<br>
+Özellikler:<br>
+•	Modern Teknoloji Kullanımı: Convolutional Neural Networks (CNN) ve Recurrent Neural Networks (RNN) tabanlı bir model kullanır.<br>
+•	Daha Kolay Kullanım: Kullanıcı dostu API’ler sağlar.<br>
+•	Çok Dilli Destek: 80+ dili destekler.<br>
+•	El Yazısı Desteği: Karmaşık el yazısı karakterlerini tanıyabilir.<br>
+•	Hız ve Performans: Tesseract’a göre daha hızlı ve doğruluk oranı yüksek olabilir, ancak daha fazla işlem gücü gerektirebilir.<br></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">easyocr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: easyocr in c:\users\nazim\anaconda3\lib\site-packages (1.7.2)
+Requirement already satisfied: torch in c:\users\nazim\anaconda3\lib\site-packages (from easyocr) (2.2.2)
+Requirement already satisfied: torchvision&gt;=0.5 in c:\users\nazim\anaconda3\lib\site-packages (from easyocr) (0.17.2)
+Requirement already satisfied: opencv-python-headless in c:\users\nazim\anaconda3\lib\site-packages (from easyocr) (4.10.0.84)
+Requirement already satisfied: scipy in c:\users\nazim\anaconda3\lib\site-packages (from easyocr) (1.10.1)
+Requirement already satisfied: numpy in c:\users\nazim\anaconda3\lib\site-packages (from easyocr) (1.24.3)
+Requirement already satisfied: Pillow in c:\users\nazim\anaconda3\lib\site-packages (from easyocr) (10.2.0)
+Requirement already satisfied: scikit-image in c:\users\nazim\anaconda3\lib\site-packages (from easyocr) (0.22.0)
+Requirement already satisfied: python-bidi in c:\users\nazim\anaconda3\lib\site-packages (from easyocr) (0.6.3)
+Requirement already satisfied: PyYAML in c:\users\nazim\anaconda3\lib\site-packages (from easyocr) (6.0.1)
+Requirement already satisfied: Shapely in c:\users\nazim\anaconda3\lib\site-packages (from easyocr) (2.0.6)
+Requirement already satisfied: pyclipper in c:\users\nazim\anaconda3\lib\site-packages (from easyocr) (1.3.0.post6)
+Requirement already satisfied: ninja in c:\users\nazim\anaconda3\lib\site-packages (from easyocr) (1.11.1.3)
+Requirement already satisfied: filelock in c:\users\nazim\anaconda3\lib\site-packages (from torch-&gt;easyocr) (3.13.1)
+Requirement already satisfied: typing-extensions&gt;=4.8.0 in c:\users\nazim\anaconda3\lib\site-packages (from torch-&gt;easyocr) (4.12.2)
+Requirement already satisfied: sympy in c:\users\nazim\anaconda3\lib\site-packages (from torch-&gt;easyocr) (1.12)
+Requirement already satisfied: networkx in c:\users\nazim\anaconda3\lib\site-packages (from torch-&gt;easyocr) (3.1)
+Requirement already satisfied: jinja2 in c:\users\nazim\anaconda3\lib\site-packages (from torch-&gt;easyocr) (3.1.3)
+Requirement already satisfied: fsspec in c:\users\nazim\anaconda3\lib\site-packages (from torch-&gt;easyocr) (2023.10.0)
+Requirement already satisfied: imageio&gt;=2.27 in c:\users\nazim\anaconda3\lib\site-packages (from scikit-image-&gt;easyocr) (2.33.1)
+Requirement already satisfied: tifffile&gt;=2022.8.12 in c:\users\nazim\anaconda3\lib\site-packages (from scikit-image-&gt;easyocr) (2023.4.12)
+Requirement already satisfied: packaging&gt;=21 in c:\users\nazim\anaconda3\lib\site-packages (from scikit-image-&gt;easyocr) (24.1)
+Requirement already satisfied: lazy_loader&gt;=0.3 in c:\users\nazim\anaconda3\lib\site-packages (from scikit-image-&gt;easyocr) (0.3)
+Requirement already satisfied: MarkupSafe&gt;=2.0 in c:\users\nazim\anaconda3\lib\site-packages (from jinja2-&gt;torch-&gt;easyocr) (2.1.3)
+Requirement already satisfied: mpmath&gt;=0.19 in c:\users\nazim\anaconda3\lib\site-packages (from sympy-&gt;torch-&gt;easyocr) (1.3.0)
+Note: you may need to restart the kernel to use updated packages.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">easyocr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cv2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">cv2</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.10.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reader</span> <span class="o">=</span> <span class="n">easyocr</span><span class="o">.</span><span class="n">Reader</span><span class="p">([</span><span class="s1">&#39;tr&#39;</span><span class="p">,</span> <span class="s1">&#39;en&#39;</span><span class="p">],</span> <span class="n">gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neither CUDA nor MPS are available - defaulting to CPU. Note: This module is much faster with a GPU.
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>reader = easyocr.Reader([‘tr’, ‘en’], gpu=False)</strong>: easyocr kütüphanesinden bir okuyucu oluşturuyoruz. Bu okuyucu, Türkçe ve İngilizce dillerini tanıyacak şekilde ayarlanmıştır ([‘tr’, ‘en’]).</p>
+<p><strong>gpu=False</strong> parametresi, grafik işlemciyi kullanmayacağımızı belirtir, bu nedenle işlemci tabanlı bir çözüm kullanılır.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;/kaggle/input/elektrik-sayac/Akilli-elektrik-sayaci.png&quot;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_COLOR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kontrol etme</span>
+<span class="k">if</span> <span class="n">img1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resim yüklenemedi. Dosya yolu veya formatı kontrol edin.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Resim başarıyla yüklendi.&quot;</span><span class="p">)</span>
+    <span class="c1"># Resmi gösterme (isteğe bağlı)</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">google.colab.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">cv2_imshow</span>  <span class="c1"># Import for displaying in Colab</span>
+    <span class="n">cv2_imshow</span><span class="p">(</span><span class="n">img1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Resim yüklenemedi. Dosya yolu veya formatı kontrol edin.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ensure the image is loaded correctly</span>
+<span class="k">if</span> <span class="n">img1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+	<span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Image not loaded. Please check the file path.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Perform OCR on the image</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">readtext</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">paragraph</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Ensure the image is loaded correctly</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">if</span> <span class="n">img1</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> 	<span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Image not loaded. Please check the file path.&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># Perform OCR on the image</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">results</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">readtext</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">paragraph</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: Image not loaded. Please check the file path.
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>results_paragraph = reader.readtext(img, detail=1, paragraph=True):</strong> Oluşturduğumuz okuyucu kullanarak resimdeki metni okur.</p>
+<p><strong>detail=1</strong> detaylı sonuçları almayı sağlar ve</p>
+<p><strong>paragraph=True</strong> ile metin paragraf olarak alınır.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[[[247, 39], [553, 39], [553, 266], [247, 266]],
+  &#39;LUnA ELEKTRONIK ELEKTRIK SAYACI 000bzb 80 nirzuana kWh ( €Mig]1432 E2, 11 Inpat Qrcin Tenn SK 14 - 048 Mi 003 Reaktif 2018 Iroavarh&#39;],
+ [[[225, 304], [411, 304], [411, 405], [225, 405]],
+  &#39;LSM1O BINA DISI ÇOK TARIFELI FAZLI 2 TELLI AKTIF REAKTIF 240V 0.25-5(100A 50 Hz CLASS B TIP: LSM1O&#39;],
+ [[[459, 347], [527, 347], [527, 385], [459, 385]],
+  &#39;EN 50+70-1 EN 50+70-3 EN 50*70-23&#39;],
+ [[[474, 402], [506, 402], [506, 410], [474, 410]], &#39;Cnsm&#39;],
+ [[[455, 409], [531, 409], [531, 439], [455, 439]], &#39;SicaAral 40 C +70 C&#39;],
+ [[[232, 419], [397, 419], [397, 450], [232, 450]],
+  &#39;00002018 Ehr Elntta San 1c4s 10001 Squa Ko94o5b Cavlnr&#39;]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">readtext</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">paragraph</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[([[247, 39], [305, 39], [305, 59], [247, 59]], &#39;LUnA&#39;, 0.4743146598339081),
+ ([[312, 42], [477, 42], [477, 59], [312, 59]],
+  &#39;ELEKTRONIK ELEKTRIK SAYACI&#39;,
+  0.8028129333087954),
+ ([[294, 66], [476, 66], [476, 138], [294, 138]],
+  &#39;000bzb&#39;,
+  0.05392073662104017),
+ ([[332, 134], [376, 134], [376, 164], [332, 164]], &#39;80&#39;, 0.5314324745942695),
+ ([[425, 141], [523, 141], [523, 161], [425, 161]],
+  &#39;nirzuana kWh&#39;,
+  0.044554275877816706),
+ ([[331, 175], [457, 175], [457, 211], [331, 211]],
+  &#39;( €Mig]1432&#39;,
+  0.3573671302210799),
+ ([[471, 205], [503, 205], [503, 217], [471, 217]],
+  &#39;E2, 11&#39;,
+  0.23456532521251386),
+ ([[522, 208], [550, 208], [550, 216], [522, 216]],
+  &#39;Inpat&#39;,
+  0.28627759915789086),
+ ([[370, 230], [394, 230], [394, 238], [370, 238]],
+  &#39;Tenn&#39;,
+  0.5185317397117615),
+ ([[407, 223], [509, 223], [509, 237], [407, 237]],
+  &#39;SK 14 - 048 Mi 003&#39;,
+  0.611246981944845),
+ ([[519, 221], [553, 221], [553, 233], [519, 233]],
+  &#39;Reaktif&#39;,
+  0.6253635655487937),
+ ([[345, 241], [389, 241], [389, 261], [345, 261]],
+  &#39;2018&#39;,
+  0.9999958872795105),
+ ([[518, 258], [552, 258], [552, 266], [518, 266]],
+  &#39;Iroavarh&#39;,
+  0.030788647796314156),
+ ([[226, 304], [302, 304], [302, 330], [226, 330]],
+  &#39;LSM1O&#39;,
+  0.9165741917229918),
+ ([[227, 333], [363, 333], [363, 349], [227, 349]],
+  &#39;BINA DISI ÇOK TARIFELI&#39;,
+  0.5953657832904999),
+ ([[235, 349], [399, 349], [399, 365], [235, 365]],
+  &#39;FAZLI 2 TELLI AKTIF REAKTIF&#39;,
+  0.9093531607156335),
+ ([[459, 347], [521, 347], [521, 361], [459, 361]],
+  &#39;EN 50+70-1&#39;,
+  0.4697568326297971),
+ ([[459, 359], [521, 359], [521, 375], [459, 375]],
+  &#39;EN 50+70-3&#39;,
+  0.7163531138194081),
+ ([[227, 367], [411, 367], [411, 383], [227, 383]],
+  &#39;240V 0.25-5(100A 50 Hz CLASS B&#39;,
+  0.3394181780052959),
+ ([[459, 373], [527, 373], [527, 385], [459, 385]],
+  &#39;EN 50*70-23&#39;,
+  0.45988817277190397),
+ ([[225, 389], [299, 389], [299, 405], [225, 405]],
+  &#39;TIP: LSM1O&#39;,
+  0.8121648806529216),
+ ([[474, 402], [506, 402], [506, 410], [474, 410]],
+  &#39;Cnsm&#39;,
+  0.11376029998064041),
+ ([[461, 409], [519, 409], [519, 421], [461, 421]],
+  &#39;SicaAral&#39;,
+  0.15556760902179992),
+ ([[303, 419], [397, 419], [397, 433], [303, 433]],
+  &#39;00002018&#39;,
+  0.7962953103489302),
+ ([[251, 433], [359, 433], [359, 445], [251, 445]],
+  &#39;Ehr Elntta San 1c4s&#39;,
+  0.012514292965354126),
+ ([[455, 425], [487, 425], [487, 439], [455, 439]],
+  &#39;40 C&#39;,
+  0.37282684445381165),
+ ([[493, 425], [531, 425], [531, 439], [493, 439]],
+  &#39;+70 C&#39;,
+  0.5127908495871627),
+ ([[232, 442], [366, 442], [366, 450], [232, 450]],
+  &#39;10001 Squa Ko94o5b Cavlnr&#39;,
+  0.07627746634011373),
+ ([[339.35981560033554, 228.23177872040262],
+   [368.9720822085733, 231.76535946689611],
+   [367.64018439966446, 241.76822127959738],
+   [338.0279177914267, 239.23464053310389]],
+  &#39;Qrcin&#39;,
+  0.065164643023339)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">readtext</span><span class="p">(</span><span class="n">img1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[([[247, 39], [305, 39], [305, 59], [247, 59]], &#39;LUnA&#39;, 0.4743146598339081),
+ ([[312, 42], [477, 42], [477, 59], [312, 59]],
+  &#39;ELEKTRONIK ELEKTRIK SAYACI&#39;,
+  0.8028129333087954),
+ ([[294, 66], [476, 66], [476, 138], [294, 138]],
+  &#39;000bzb&#39;,
+  0.05392073662104017),
+ ([[332, 134], [376, 134], [376, 164], [332, 164]], &#39;80&#39;, 0.5314324745942695),
+ ([[425, 141], [523, 141], [523, 161], [425, 161]],
+  &#39;nirzuana kWh&#39;,
+  0.044554275877816706),
+ ([[331, 175], [457, 175], [457, 211], [331, 211]],
+  &#39;( €Mig]1432&#39;,
+  0.3573671302210799),
+ ([[471, 205], [503, 205], [503, 217], [471, 217]],
+  &#39;E2, 11&#39;,
+  0.23456532521251386),
+ ([[522, 208], [550, 208], [550, 216], [522, 216]],
+  &#39;Inpat&#39;,
+  0.28627759915789086),
+ ([[370, 230], [394, 230], [394, 238], [370, 238]],
+  &#39;Tenn&#39;,
+  0.5185317397117615),
+ ([[407, 223], [509, 223], [509, 237], [407, 237]],
+  &#39;SK 14 - 048 Mi 003&#39;,
+  0.611246981944845),
+ ([[519, 221], [553, 221], [553, 233], [519, 233]],
+  &#39;Reaktif&#39;,
+  0.6253635655487937),
+ ([[345, 241], [389, 241], [389, 261], [345, 261]],
+  &#39;2018&#39;,
+  0.9999958872795105),
+ ([[518, 258], [552, 258], [552, 266], [518, 266]],
+  &#39;Iroavarh&#39;,
+  0.030788647796314156),
+ ([[226, 304], [302, 304], [302, 330], [226, 330]],
+  &#39;LSM1O&#39;,
+  0.9165741917229918),
+ ([[227, 333], [363, 333], [363, 349], [227, 349]],
+  &#39;BINA DISI ÇOK TARIFELI&#39;,
+  0.5953657832904999),
+ ([[235, 349], [399, 349], [399, 365], [235, 365]],
+  &#39;FAZLI 2 TELLI AKTIF REAKTIF&#39;,
+  0.9093531607156335),
+ ([[459, 347], [521, 347], [521, 361], [459, 361]],
+  &#39;EN 50+70-1&#39;,
+  0.4697568326297971),
+ ([[459, 359], [521, 359], [521, 375], [459, 375]],
+  &#39;EN 50+70-3&#39;,
+  0.7163531138194081),
+ ([[227, 367], [411, 367], [411, 383], [227, 383]],
+  &#39;240V 0.25-5(100A 50 Hz CLASS B&#39;,
+  0.3394181780052959),
+ ([[459, 373], [527, 373], [527, 385], [459, 385]],
+  &#39;EN 50*70-23&#39;,
+  0.45988817277190397),
+ ([[225, 389], [299, 389], [299, 405], [225, 405]],
+  &#39;TIP: LSM1O&#39;,
+  0.8121648806529216),
+ ([[474, 402], [506, 402], [506, 410], [474, 410]],
+  &#39;Cnsm&#39;,
+  0.11376029998064041),
+ ([[461, 409], [519, 409], [519, 421], [461, 421]],
+  &#39;SicaAral&#39;,
+  0.15556760902179992),
+ ([[303, 419], [397, 419], [397, 433], [303, 433]],
+  &#39;00002018&#39;,
+  0.7962953103489302),
+ ([[251, 433], [359, 433], [359, 445], [251, 445]],
+  &#39;Ehr Elntta San 1c4s&#39;,
+  0.012514292965354126),
+ ([[455, 425], [487, 425], [487, 439], [455, 439]],
+  &#39;40 C&#39;,
+  0.37282684445381165),
+ ([[493, 425], [531, 425], [531, 439], [493, 439]],
+  &#39;+70 C&#39;,
+  0.5127908495871627),
+ ([[232, 442], [366, 442], [366, 450], [232, 450]],
+  &#39;10001 Squa Ko94o5b Cavlnr&#39;,
+  0.07627746634011373),
+ ([[339.35981560033554, 228.23177872040262],
+   [368.9720822085733, 231.76535946689611],
+   [367.64018439966446, 241.76822127959738],
+   [338.0279177914267, 239.23464053310389]],
+  &#39;Qrcin&#39;,
+  0.065164643023339)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">readtext</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">allowlist</span><span class="o">=</span><span class="s2">&quot;0123456789&quot;</span><span class="p">,</span> <span class="n">paragraph</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[[[247, 39], [553, 39], [553, 266], [247, 266]],
+  &#39;13 72777017175871 000828 80 654 241181432 0211 6 01 7 561440481003 3 2018 9&#39;],
+ [[[225, 304], [411, 304], [411, 405], [225, 405]],
+  &#39;45110 124018177673211 7112111467476 240102552100450524838 7213110&#39;],
+ [[[459, 347], [527, 347], [527, 385], [459, 385]],
+  &#39;01504701 01504703 215087023&#39;],
+ [[[474, 402], [506, 402], [506, 410], [474, 410]], &#39;7&#39;],
+ [[[455, 409], [531, 409], [531, 439], [455, 439]], &#39;54 405 4705&#39;],
+ [[[232, 419], [397, 419], [397, 450], [232, 450]],
+  &#39;00002018 65401248 1000150680940586&#39;]]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yukarıda kısmen yaptığımız gibi çıktıyı özelleştirerek sadece okunmasını sağlayabiliriz.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grayimg</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">cvtColor</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">COLOR_BGR2GRAY</span><span class="p">)</span> <span class="c1"># resmi gri tonlama yaparak daha kolay okunmasını sağlayabiliriz</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">google.colab.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">cv2_imshow</span>
+<span class="n">cv2_imshow</span><span class="p">(</span><span class="n">grayimg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/506a93bee3efe4699d257020ac7da54f64b07541025fce6b0758b7f430b5d185.png" src="../_images/506a93bee3efe4699d257020ac7da54f64b07541025fce6b0758b7f430b5d185.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">readtext</span><span class="p">(</span><span class="n">grayimg</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">paragraph</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allowlist</span><span class="o">=</span><span class="s2">&quot;0123456789&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;13 72777017175871 000828 180 654 24171432 22141 6 01 7 561440481003 3 2018 9&#39;,
+ &#39;45110 124018177673211 7112111467476 240102552100450524838 7213110&#39;,
+ &#39;01504701 01504703 215087023&#39;,
+ &#39;5280 405 4705&#39;,
+ &#39;00002018 65401248 1000150680940586&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cropped_image</span> <span class="o">=</span> <span class="n">grayimg</span><span class="p">[</span><span class="mi">65</span><span class="p">:</span><span class="mi">160</span><span class="p">,</span> <span class="mi">230</span><span class="p">:</span><span class="mi">530</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">cv2_imshow</span>
+<span class="n">cv2_imshow</span><span class="p">(</span><span class="n">cropped_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0b0ee5ec49a5fe0b5b0c1ee2dd4f4cf4b93d68b530c8a1c940517ca292da227e.png" src="../_images/0b0ee5ec49a5fe0b5b0c1ee2dd4f4cf4b93d68b530c8a1c940517ca292da227e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">binary_image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">cropped_image</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">THRESH_BINARY</span><span class="p">)</span>
+<span class="n">cv2_imshow</span><span class="p">(</span><span class="n">binary_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/363d1d7496135b524de36c66196c3d519ab0a2f16ef6612532c7d10bf4e1767c.png" src="../_images/363d1d7496135b524de36c66196c3d519ab0a2f16ef6612532c7d10bf4e1767c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">readtext</span><span class="p">(</span><span class="n">binary_image</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">paragraph</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">allowlist</span><span class="o">=</span><span class="s2">&quot;0123456789&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gösterge alanındaki metin:&quot;</span><span class="p">,</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gösterge alanındaki metin: [&#39;0882814 80 24673&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">denoised_image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">fastNlMeansDenoising</span><span class="p">(</span><span class="n">binary_image</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv2_imshow</span><span class="p">(</span><span class="n">denoised_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8f623e73999689b555e057e57946d541563549c067144a4f520394bb3166d17a.png" src="../_images/8f623e73999689b555e057e57946d541563549c067144a4f520394bb3166d17a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">readtext</span><span class="p">(</span><span class="n">denoised_image</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">paragraph</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">allowlist</span><span class="o">=</span><span class="s2">&quot;0123456789&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gösterge alanındaki metin:&quot;</span><span class="p">,</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gösterge alanındaki metin: [&#39;0882814&#39;, &#39;585&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">kernel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">sharpened_image</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">filter2D</span><span class="p">(</span><span class="n">cropped_image</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv2_imshow</span><span class="p">(</span><span class="n">sharpened_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/c40b486197f80c957ba44e9601663e54f2dfda87ac879efb1dd8f710fc058033.png" src="../_images/c40b486197f80c957ba44e9601663e54f2dfda87ac879efb1dd8f710fc058033.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">reader</span><span class="o">.</span><span class="n">readtext</span><span class="p">(</span><span class="n">denoised_image</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">paragraph</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">allowlist</span><span class="o">=</span><span class="s2">&quot;0123456789&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Gösterge alanındaki metin:&quot;</span><span class="p">,</span><span class="n">results</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gösterge alanındaki metin: [&#39;0882814&#39;, &#39;585&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pytesseract</span>
+
+<span class="c1"># Eşikleme ile görüntüyü netleştirmek için;</span>
+<span class="n">thresh</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">threshold</span><span class="p">(</span><span class="n">cropped_image</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">THRESH_BINARY_INV</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Gürültüyü azaltmak için;</span>
+<span class="n">thresh</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">medianBlur</span><span class="p">(</span><span class="n">thresh</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># OCR işlemi (sadece sayıları tanıması için whitelist kullan)</span>
+<span class="n">custom_config</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;--oem 3 --psm 7 -c tessedit_char_whitelist=0123456789&#39;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">pytesseract</span><span class="o">.</span><span class="n">image_to_string</span><span class="p">(</span><span class="n">thresh</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">custom_config</span><span class="p">)</span>
+
+<span class="c1"># Sonucu temizlemek (boşlukları ve gereksiz karakterleri kaldırır)</span>
+<span class="c1">#text = &#39;&#39;.join(filter(str.isdigit, text))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sayaç Değeri:&quot;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sayaç Değeri: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv2_imshow</span><span class="p">(</span><span class="n">thresh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9647e0ebb0ae025fc8cbc64b78069905402230d543d9bf6ee2950e31490b9b63.png" src="../_images/9647e0ebb0ae025fc8cbc64b78069905402230d543d9bf6ee2950e31490b9b63.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OCR işlemi (sadece sayıları tanıması için whitelist kullan)</span>
+<span class="n">custom_config</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;--oem 3 --psm 6 -c tessedit_char_whitelist=0123456789&#39;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">pytesseract</span><span class="o">.</span><span class="n">image_to_string</span><span class="p">(</span><span class="n">cropped_image</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">custom_config</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sayaç Değeri:&quot;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sayaç Değeri: 00028
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OCR işlemi (sadece sayıları tanıması için whitelist kullan)</span>
+<span class="n">custom_config</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;--oem 3 --psm 7 -c tessedit_char_whitelist=0123456789&#39;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">pytesseract</span><span class="o">.</span><span class="n">image_to_string</span><span class="p">(</span><span class="n">cropped_image</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">custom_config</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sayaç Değeri:&quot;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sayaç Değeri: 00028
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OCR işlemi (sadece sayıları tanıması için whitelist kullan)</span>
+<span class="n">custom_config</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;--oem 3 --psm 3 -c tessedit_char_whitelist=0123456789&#39;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">pytesseract</span><span class="o">.</span><span class="n">image_to_string</span><span class="p">(</span><span class="n">cropped_image</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">custom_config</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sayaç Değeri:&quot;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sayaç Değeri:  
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># OCR işlemi (sadece sayıları tanıması için whitelist kullan)</span>
+<span class="n">custom_config</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;--psm 3 -c tessedit_char_whitelist=0123456789&#39;</span>
+<span class="n">text</span> <span class="o">=</span> <span class="n">pytesseract</span><span class="o">.</span><span class="n">image_to_string</span><span class="p">(</span><span class="n">cropped_image</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">custom_config</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sayaç Değeri:&quot;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sayaç Değeri:  
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="n">pytesseract</span><span class="o">.</span><span class="n">image_to_string</span><span class="p">(</span><span class="n">cropped_image</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">custom_config</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sayaç Değeri:&quot;</span><span class="p">,</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sayaç Değeri:  
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cv2_imshow</span><span class="p">(</span><span class="n">cropped_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/0b0ee5ec49a5fe0b5b0c1ee2dd4f4cf4b93d68b530c8a1c940517ca292da227e.png" src="../_images/0b0ee5ec49a5fe0b5b0c1ee2dd4f4cf4b93d68b530c8a1c940517ca292da227e.png" />
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./_notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Nazim CALIK
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
