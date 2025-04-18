@@ -24,7 +24,3 @@ repository:
   url: https://github.com/nazmclk/ds-portfolio
   path_to_book: ""
   branch: master
-
-# Add GitHub buttons to your book
-html:
-  use_repository_button: true
